@@ -2,7 +2,6 @@ import React from 'react';
 import Header from './Header';
 import './App.css';
 import './firebase/config';
-// import './pages/Signup';
 import { Route, Switch, BrowserRouter, Redirect } from 'react-router-dom';
 // import Signup from './pages/Signup';
 // import Login from './pages/Login';
