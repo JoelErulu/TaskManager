@@ -7,7 +7,7 @@ import { Route, Switch, BrowserRouter, Redirect } from 'react-router-dom';
 // import Signup from './pages/Signup';
 // import Login from './pages/Login';
 // import ForgotPassword from './pages/ForgotPassword';
-// import { UserProvider } from './firebase/UserProvider';
+import { UserProvider } from './firebase/UserProvider';
 // import Profile from './pages/Profile';
 // import ProfileRedirect from './router/ProfileRedirect';
 // import PrivateRoute from './router/PrivateRoute';
