@@ -21,7 +21,7 @@ function App() {
           <div className="ui grid container">
             <Switch>
               {/* <PrivateRoute exact path="/profile/:id" component={Profile} /> */}
-              <ProfileRedirect exact path="/signup" component={Signup} />
+              {/* <ProfileRedirect exact path="/signup" component={Signup} /> */}
               {/* <ProfileRedirect exact path="/login" component={Login} /> */}
               {/* <ProfileRedirect exact path="/forgotpassword" component={ForgotPassword} /> */}
               <Route exact path="/">
