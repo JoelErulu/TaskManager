@@ -3,8 +3,7 @@ import { logout } from '../firebase/auth';
 import { useHistory } from 'react-router-dom';
 import { useSession } from '../firebase/UserProvider';
 import 'bootstrap/dist/css/bootstrap.min.css';  // Import Bootstrap CSS
-import '../global.css'
-
+import '../global.css';  // Custom global styles
 
 function Header() {
   const history = useHistory();
@@ -21,19 +20,51 @@ function Header() {
 
   return (
     <header className="bg-white p-3 mb-4">
-      <div className="container d-flex justify-content-between align-items-center">
-        <h2 className="text-dark">Task Manager</h2>
-        <div>
-          {!!user ? (
-            <button className="btn custom-btn" onClick={logoutUser}>
-              LOGOUT
-            </button>
-          ) : (
-            <button className="btn custom-btn" onClick={goToLogin}>
-              LOGIN
-            </button>
-          )}
-        </div>
+      <div className="container">
+        {/* Navbar */}
+        <nav className="navbar navbar-expand-lg navbar-light">
+          <a className="navbar-brand" href="/">
+            Task Manager
+          </a>
+          <button
+            className="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNav"
+            aria-controls="navbarNav"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span className="navbar-toggler-icon"></span>
+          </button>
+          <div className="collapse navbar-collapse" id="navbarNav">
+            <ul className="navbar-nav ms-auto">
+              <li className="nav-item">
+                <a className="nav-link" href="/view-task">
+                  Tasks
+                </a>
+              </li>
+              <li className="nav-item">
+                <a className="nav-link" href="/profile/:id">
+                  Profile
+                </a>
+              </li>
+              {!!user ? (
+                <li className="nav-item">
+                  <button className="nav-link btn" onClick={logoutUser}>
+                    Logout
+                  </button>
+                </li>
+              ) : (
+                <li className="nav-item">
+                  <button className="nav-link btn" onClick={goToLogin}>
+                    Login
+                  </button>
+                </li>
+              )}
+            </ul>
+          </div>
+        </nav>
       </div>
     </header>
   );

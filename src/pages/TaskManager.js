@@ -13,6 +13,10 @@ function TaskManager() {
     history.push('/view-task');
   };
 
+  const naviagteToCompletedTasks = () => {
+    history.push('/completed-tasks');
+  };
+
   return (
     <div className="container min-vh-100 d-flex justify-content-center align-items-center">
       <div className="text-center">
@@ -22,11 +26,15 @@ function TaskManager() {
             Create Task
           </button>
           <p className="mt-2 text-muted">Click to create a new task.</p>
-
           <button className="btn custom-btn btn-lg" onClick={navigateToViewTask}>
             View Tasks
           </button>
           <p className="mt-2 text-muted">Click to view and manage your existing tasks.</p>
+          <button className="btn custom-btn btn-lg" onClick={naviagteToCompletedTasks}>
+            Completed Tasks
+          </button>
+          <p className="mt-2 text-muted"> View Your Completed Tasks </p>
+
         </div>
       </div>
     </div>

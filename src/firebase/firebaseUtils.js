@@ -55,3 +55,53 @@ export const createTask = async (title, description) => {
       return { success: false, error };
     }
   };
+
+export const markTaskAsDone = async (taskId) => {
+  try {
+    const taskRef = db.collection('tasks').doc(taskId); 
+    const taskSnapshot = await taskRef.get();
+
+    if (!taskSnapshot.exists) {
+      throw new Error('Task not found');
+    }
+
+    const taskData = taskSnapshot.data();
+
+    await db.collection('completedTasks').doc(taskId).set({
+      ...taskData,
+      completedAt: new Date().toISOString(), // Add completed timestamp
+    });
+
+    await taskRef.delete();
+
+    return { success: true };
+  } catch (error) {
+    console.error('Error marking task as done: ', error);
+    return { success: false, error };
+  }
+};
+
+export const getCompletedTasks = async () => {
+    try {
+      const snapshot = await db.collection('completedTasks').get();
+      const tasks = snapshot.docs.map(doc => ({
+        id: doc.id,
+        ...doc.data()
+      }));
+      return { success: true, tasks };
+    } catch (error) {
+      console.error('Error fetching completed tasks: ', error);
+      return { success: false, error };
+    }
+  };
+  
+  export const deleteCompletedTask = async (taskId) => {
+    try {
+      await db.collection('completedTasks').doc(taskId).delete();
+      return { success: true };
+    } catch (error) {
+      console.error('Error deleting completed task: ', error);
+      return { success: false, error };
+    }
+  };
+

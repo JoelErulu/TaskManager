@@ -14,6 +14,8 @@ import TaskManager from './pages/TaskManager.js';
 import CreateTask from './pages/CreateTask.js'
 import ViewTask from './pages/ViewTask.js'
 import UserLanding from './pages/UserLanding.js'
+import CompletedTasks from './pages/CompletedTasks.js'
+
 
 
 
@@ -34,6 +36,8 @@ function App() {
               <ProfileRedirect exact path="/forgotpassword" component={ForgotPassword} />
               <Route path="/create-task" component={CreateTask} />
               <Route path="/view-task" component={ViewTask} />
+              <Route path="/completed-tasks" component={CompletedTasks} />
+
 
 
 

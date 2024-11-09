@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { signup } from '../firebase/auth';
 import { Link } from 'react-router-dom';
+import 'bootstrap/dist/css/bootstrap.min.css'; // Ensure Bootstrap is imported
 
 function Signup(props) {
   const { register, handleSubmit, reset } = useForm();
@@ -24,68 +25,77 @@ function Signup(props) {
     }
   };
 
-  const formClassName = `ui form ${isLoading ? 'loading' : ''}`;
-
   return (
-    <div className="login-container">
-      <div className="ui card login-card">
-        <div className="content">
-          <form className={formClassName} onSubmit={handleSubmit(onSubmit)}>
-            <div className="two fields">
-              <div className="field">
-                <label>
-                  First Name
-                  <input
-                    type="text"
-                    name="firstName"
-                    placeholder="First Name"
-                    ref={register}
-                  />
-                </label>
-              </div>
-              <div className="field">
-                <label>
-                  Last Name
-                  <input
-                    type="text"
-                    name="lastName"
-                    placeholder="Last Name"
-                    ref={register}
-                  />
-                </label>
-              </div>
-            </div>
-            <div className="field">
-              <label>
-                Email
-                <input
-                  type="email"
-                  name="email"
-                  placeholder="Email"
-                  ref={register}
-                />
+    <div className="container my-5">
+      <div className="card shadow-lg p-4">
+        <h2 className="text-center mb-4">Sign Up</h2>
+        <form onSubmit={handleSubmit(onSubmit)}>
+          <div className="row">
+            <div className="col-md-6 mb-3">
+              <label htmlFor="firstName" className="form-label">
+                First Name
               </label>
+              <input
+                type="text"
+                className="form-control"
+                id="firstName"
+                placeholder="First Name"
+                {...register('firstName')}
+              />
             </div>
-            <div className="field">
-              <label>
-                Password
-                <input
-                  type="password"
-                  name="password"
-                  placeholder="Password"
-                  ref={register}
-                />
+            <div className="col-md-6 mb-3">
+              <label htmlFor="lastName" className="form-label">
+                Last Name
               </label>
+              <input
+                type="text"
+                className="form-control"
+                id="lastName"
+                placeholder="Last Name"
+                {...register('lastName')}
+              />
             </div>
-            <div className="field actions">
-              <button className="ui primary button login" type="submit">
-                Signup
-              </button>
-              or
-              <Link to="/login">Log In</Link>
-            </div>
-          </form>
-        </div>
+          </div>
+          <div className="mb-3">
+            <label htmlFor="email" className="form-label">
+              Email
+            </label>
+            <input
+              type="email"
+              className="form-control"
+              id="email"
+              placeholder="Email"
+              {...register('email')}
+            />
+          </div>
+          <div className="mb-3">
+            <label htmlFor="password" className="form-label">
+              Password
+            </label>
+            <input
+              type="password"
+              className="form-control"
+              id="password"
+              placeholder="Password"
+              {...register('password')}
+            />
+          </div>
+          <div className="d-flex justify-content-between">
+            <button
+              type="submit"
+              className={`btn btn-primary ${isLoading ? 'disabled' : ''}`}
+              disabled={isLoading}
+            >
+              {isLoading ? 'Signing Up...' : 'Sign Up'}
+            </button>
+            <p>
+              Already have an account?{' '}
+              <Link to="/login" className="text-decoration-none">
+                Log In
+              </Link>
+            </p>
+          </div>
+        </form>
       </div>
     </div>
   );

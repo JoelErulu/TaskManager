@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { getTasks, modifyTask, deleteTask } from '../firebase/firebaseUtils';  // Import deleteTask function
+import { getTasks, modifyTask, deleteTask, markTaskAsDone } from '../firebase/firebaseUtils';  // Import markTaskAsDone function
 import 'bootstrap/dist/css/bootstrap.min.css';  // Import Bootstrap CSS
 
 const ViewTask = () => {
@@ -55,6 +55,17 @@ const ViewTask = () => {
     setLoading(false);
   };
 
+  const handleMarkAsDone = async (taskId) => {
+    setLoading(true);
+    const result = await markTaskAsDone(taskId); // Function to mark task as done and move it to completedTasks table
+    if (result.success) {
+      setTasks(tasks.filter((task) => task.id !== taskId)); // Remove task from current list
+    } else {
+      console.error('Error marking task as done');
+    }
+    setLoading(false);
+  };
+
   return (
     <div className="container mt-5">
       <h2 className="text-center mb-4">View Tasks</h2>
@@ -79,7 +90,6 @@ const ViewTask = () => {
                 <tr key={task.id}>
                   <th scope="row">{index + 1}</th>
                   <td>
-
                     {editingTaskId === task.id ? (
                       <input
                         type="text"
@@ -124,10 +134,16 @@ const ViewTask = () => {
                           Edit
                         </button>
                         <button
-                          className="btn btn-danger"
+                          className="btn btn-danger me-2"
                           onClick={() => handleDeleteTask(task.id)}
                         >
                           Delete
+                        </button>
+                        <button
+                          className="btn btn-info"
+                          onClick={() => handleMarkAsDone(task.id)}
+                        >
+                          Mark as Done
                         </button>
                       </>
                     )}
