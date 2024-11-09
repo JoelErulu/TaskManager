@@ -1,18 +1,19 @@
 import React from 'react';
-import { useHistory } from 'react-router-dom';
+import { Link } from 'react-router-dom'; // Import Link from React Router
+import 'bootstrap/dist/css/bootstrap.min.css';  // Import Bootstrap CSS
 
-function Landing() {
-  const history = useHistory();
-
-  const goToTaskManager = () => {
-    history.push('/taskmanager');
-  };
-
+const Landing = () => {
   return (
-    <div>
-      <button onClick={goToTaskManager}>Task Manager</button>
+    <div className="bg-info text-white min-vh-100 d-flex justify-content-center align-items-center">
+      <div className="text-center">
+        <h1 className="display-3">Welcome to the Task Manager</h1>
+        {/* Use Link to navigate to the TaskManager page */}
+        <Link to="/taskmanager">
+          <button className="btn btn-lg btn-light text-info">Manage Your Tasks</button>
+        </Link>
+      </div>
     </div>
   );
-}
+};
 
 export default Landing;

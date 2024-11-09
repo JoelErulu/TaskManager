@@ -1,6 +1,5 @@
 import React from 'react';
 import Header from './components/Header.js';
-import './App.css';
 import './firebase/config';
 import { Route, Switch, BrowserRouter, Redirect } from 'react-router-dom';
 import Signup from './pages/Signup';
