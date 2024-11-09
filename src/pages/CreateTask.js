@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import firebase from 'firebase/app';
-import 'firebase/firestore';
+import { createTask } from '../firebase/firebaseUtils';  // Import the createTask function
 import 'bootstrap/dist/css/bootstrap.min.css';  // Import Bootstrap CSS
 
 const CreateTask = () => {
@@ -14,23 +13,18 @@ const CreateTask = () => {
     setLoading(true);
     setError(null);
 
-    try {
-      const taskRef = firebase.firestore().collection('tasks');
-      await taskRef.add({
-        title: title,
-        description: description,
-        createdAt: firebase.firestore.FieldValue.serverTimestamp(), 
-      });
+    // Call the reusable createTask function
+    const result = await createTask(title, description);
 
+    if (result.success) {
       setTitle('');
       setDescription('');
       alert('Task created successfully!');
-    } catch (err) {
+    } else {
       setError('Failed to create task');
-      console.error(err);
-    } finally {
-      setLoading(false);
     }
+
+    setLoading(false);
   };
 
   return (
