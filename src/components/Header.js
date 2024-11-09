@@ -21,7 +21,6 @@ function Header() {
   return (
     <header className="bg-white p-3 mb-4">
       <div className="container">
-        {/* Navbar */}
         <nav className="navbar navbar-expand-lg navbar-light">
           <a className="navbar-brand" href="/">
             Task Manager
@@ -40,8 +39,8 @@ function Header() {
           <div className="collapse navbar-collapse" id="navbarNav">
             <ul className="navbar-nav ms-auto">
               <li className="nav-item">
-                <a className="nav-link" href="/view-task">
-                  Tasks
+                <a className="nav-link" href="/taskmanager">
+                  Task Manager
                 </a>
               </li>
               <li className="nav-item">

@@ -15,6 +15,7 @@ import CreateTask from './pages/CreateTask.js'
 import ViewTask from './pages/ViewTask.js'
 import UserLanding from './pages/UserLanding.js'
 import CompletedTasks from './pages/CompletedTasks.js'
+import Footer from './components/Footer.js'
 
 
 
@@ -38,10 +39,6 @@ function App() {
               <Route path="/view-task" component={ViewTask} />
               <Route path="/completed-tasks" component={CompletedTasks} />
 
-
-
-
-              {/* Redirect to Landing if no route matches */}
               <Redirect to="/" />
             </Switch>
           </div>

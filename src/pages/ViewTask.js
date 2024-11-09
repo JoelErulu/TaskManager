@@ -57,9 +57,9 @@ const ViewTask = () => {
 
   const handleMarkAsDone = async (taskId) => {
     setLoading(true);
-    const result = await markTaskAsDone(taskId); // Function to mark task as done and move it to completedTasks table
+    const result = await markTaskAsDone(taskId);
     if (result.success) {
-      setTasks(tasks.filter((task) => task.id !== taskId)); // Remove task from current list
+      setTasks(tasks.filter((task) => task.id !== taskId));
     } else {
       console.error('Error marking task as done');
     }

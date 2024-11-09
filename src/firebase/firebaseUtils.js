@@ -69,7 +69,7 @@ export const markTaskAsDone = async (taskId) => {
 
     await db.collection('completedTasks').doc(taskId).set({
       ...taskData,
-      completedAt: new Date().toISOString(), // Add completed timestamp
+      completedAt: new Date().toISOString(), 
     });
 
     await taskRef.delete();
