@@ -12,12 +12,20 @@ function Header() {
     history.push('/login');
   };
 
+  const goToLogin = () => {
+    history.push('/login');
+  };
+
   return (
     <header>
-      <h2>GGC</h2>
-      {!!user && (
+      <h2>Task Manager</h2>
+      {!!user ? (
         <button className="ui secondary button logout" onClick={logoutUser}>
           LOGOUT
+        </button>
+      ) : (
+        <button className="ui primary button login" onClick={goToLogin}>
+          LOGIN
         </button>
       )}
     </header>

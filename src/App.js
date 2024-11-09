@@ -10,27 +10,31 @@ import { UserProvider } from './firebase/UserProvider';
 import Profile from './pages/Profile.js';
 import ProfileRedirect from './router/ProfileRedirect';
 import PrivateRoute from './router/PrivateRoute';
+import Landing from './pages/Landing.js';
+import TaskManager from './pages/TaskManager.js';
+
 
 function App() {
   return (
     <UserProvider>
       <BrowserRouter>
-        <Header></Header>
+        <Header />
         <div className="app">
           <div className="ui grid container">
             <Switch>
-              { <PrivateRoute exact path="/profile/:id" component={Profile} /> }
-              { <ProfileRedirect exact path="/signup" component={Signup} /> }
-              { <ProfileRedirect exact path="/login" component={Login} /> }
-              { <ProfileRedirect exact path="/forgotpassword" component={ForgotPassword} /> }
-              <Route exact path="/">
-                <Redirect to="/login" />
-              </Route>
+              <Route exact path="/" component={Landing} />
+              <Route path="/taskmanager" component={TaskManager} />  
+              <PrivateRoute exact path="/profile/:id" component={Profile} />
+              <ProfileRedirect exact path="/signup" component={Signup} />
+              <ProfileRedirect exact path="/login" component={Login} />
+              <ProfileRedirect exact path="/forgotpassword" component={ForgotPassword} />
+
+              {/* Redirect to Landing if no route matches */}
+              <Redirect to="/" />
             </Switch>
           </div>
         </div>
       </BrowserRouter>
-      
     </UserProvider>
   );
 }
