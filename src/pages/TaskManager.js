@@ -1,6 +1,7 @@
 import React from 'react';
-import { useHistory } from 'react-router-dom';  // Import useHistory for navigation
-import 'bootstrap/dist/css/bootstrap.min.css';  // Import Bootstrap CSS
+import { useHistory } from 'react-router-dom';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import '../global.css';  // Custom CSS for additional styles
 
 function TaskManager() {
   const history = useHistory();  
@@ -13,28 +14,27 @@ function TaskManager() {
     history.push('/view-task');
   };
 
-  const naviagteToCompletedTasks = () => {
+  const navigateToCompletedTasks = () => {
     history.push('/completed-tasks');
   };
 
   return (
-    <div className="container min-vh-100 d-flex justify-content-center align-items-center">
-      <div className="text-center">
-        <h1 className="display-3 mb-4">Task Manager</h1>
-        <div className="d-grid gap-4 col-6 mx-auto">
-          <button className="btn custom-btn btn-lg" onClick={navigateToCreateTask}>
-            Create Task
-          </button>
-          <p className="mt-2 text-muted">Click to create a new task.</p>
-          <button className="btn custom-btn btn-lg" onClick={navigateToViewTask}>
-            View Tasks
-          </button>
-          <p className="mt-2 text-muted">Click to view and manage your existing tasks.</p>
-          <button className="btn custom-btn btn-lg" onClick={naviagteToCompletedTasks}>
-            Completed Tasks
-          </button>
-          <p className="mt-2 text-muted"> View Your Completed Tasks </p>
-
+    <div className="container min-vh-100 d-flex justify-content-center align-items-center bg-light">
+      <div className="card shadow-lg p-5" style={{ maxWidth: '500px', width: '100%' }}>
+        <div className="text-center">
+          <h1 className="display-4 mb-4">Task Manager</h1>
+          <p className="text-muted mb-4">Organize and track your tasks with ease.</p>
+          <div className="d-grid gap-3">
+            <button className="btn btn-primary btn-lg shadow-sm custom-btn" onClick={navigateToCreateTask}>
+              Create Task
+            </button>
+            <button className="btn btn-secondary btn-lg shadow-sm custom-btn" onClick={navigateToViewTask}>
+              View Tasks
+            </button>
+            <button className="btn btn-success btn-lg shadow-sm custom-btn" onClick={navigateToCompletedTasks}>
+              Completed Tasks
+            </button>
+          </div>
         </div>
       </div>
     </div>

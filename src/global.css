@@ -1,11 +1,28 @@
-
-  .custom-btn {
+ .custom-btn {
     background-color: #C82D2F;
     color: white; 
     border: none; 
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
   }
   
   .custom-btn:hover {
     background-color: #A02326; 
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   }
+  
+body {
+    background-color: #f8f9fa;
+  }
+  
+  .card {
+    border: none;
+    border-radius: 8px;
+  }
+    
+  .text-muted {
+    font-size: 0.9rem;
+  }
+
+  
   

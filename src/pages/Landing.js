@@ -1,7 +1,7 @@
 import React from 'react';
-import { useHistory } from 'react-router-dom'; // Import useHistory for programmatic navigation
-import 'bootstrap/dist/css/bootstrap.min.css';  // Import Bootstrap CSS
-import '../global.css';
+import { useHistory } from 'react-router-dom';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import '../global.css';  // Add custom global CSS if needed
 
 const Landing = () => {
   const history = useHistory(); 
@@ -11,11 +11,12 @@ const Landing = () => {
   };
 
   return (
-    <div className="bg-white text-dark min-vh-100 d-flex justify-content-center align-items-center">
+    <div className="landing-container d-flex justify-content-center align-items-center">
       <div className="text-center">
-        <h1 className="display-3">Welcome to the Task Manager</h1>
-        <button className="btn custom-btn" onClick={handleButtonClick}>
-          Task Manager
+        <h1 className="display-2 mb-4 font-weight-bold">Welcome to Task Manager</h1>
+        <p className="lead mb-5">Organize, track, and manage tasks effortlessly</p>
+        <button className="btn btn-lg custom-btn" onClick={handleButtonClick}>
+          Go to Task Manager
         </button>
       </div>
     </div>
