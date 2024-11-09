@@ -13,6 +13,8 @@ import Landing from './pages/Landing.js';
 import TaskManager from './pages/TaskManager.js';
 import CreateTask from './pages/CreateTask.js'
 import ViewTask from './pages/ViewTask.js'
+import UserLanding from './pages/UserLanding.js'
+
 
 
 

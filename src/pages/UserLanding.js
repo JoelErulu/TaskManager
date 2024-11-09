@@ -15,7 +15,7 @@ const Landing = () => {
       <div className="text-center">
         <h1 className="display-3">Welcome to the Task Manager</h1>
         <button className="btn custom-btn" onClick={handleButtonClick}>
-          Task Manager
+          Manage Your Tasks
         </button>
       </div>
     </div>
