@@ -93,15 +93,15 @@ function Login(props) {
         </form>
 
         <div className="mt-4 text-center">
-          <button
-            className="btn btn-outline-primary"
-            onClick={handleGoogleLogin}
-            disabled={isLoading}
-          >
-            {isLoading ? 'Signing in with Google...' : 'Sign in with Google'}
-          </button>
+  <button
+    className="btn btn-success"
+    onClick={handleGoogleLogin}
+    disabled={isLoading}
+  >
+    {isLoading ? 'Signing in with Google...' : 'Sign in with Google'}
+  </button>
+</div>
         </div>
-      </div>
     </div>
   );
 }

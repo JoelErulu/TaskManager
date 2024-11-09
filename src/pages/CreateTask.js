@@ -13,7 +13,6 @@ const CreateTask = () => {
     setLoading(true);
     setError(null);
 
-    // Call the reusable createTask function
     const result = await createTask(title, description);
 
     if (result.success) {
