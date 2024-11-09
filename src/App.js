@@ -29,14 +29,14 @@ function App() {
           <div className="ui grid container">
             <Switch>
               <Route exact path="/" component={Landing} />
-              <PrivateRoute path="/taskmanager" component={TaskManager} />  
+              <Route path="/taskmanager" component={TaskManager} />  
               <PrivateRoute exact path="/profile/:id" component={Profile} />
               <ProfileRedirect exact path="/signup" component={Signup} />
               <ProfileRedirect exact path="/login" component={Login} />
               <ProfileRedirect exact path="/forgotpassword" component={ForgotPassword} />
-              <PrivateRoute path="/create-task" component={CreateTask} />
-              <PrivateRoute path="/view-task" component={ViewTask} />
-              <PrivateRoute path="/completed-tasks" component={CompletedTasks} />
+              <Route path="/create-task" component={CreateTask} />
+              <Route path="/view-task" component={ViewTask} />
+              <Route path="/completed-tasks" component={CompletedTasks} />
 
               <Redirect to="/" />
             </Switch>
