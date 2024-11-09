@@ -2,17 +2,21 @@ import React from 'react';
 import { useHistory } from 'react-router-dom';  // Import useHistory for navigation
 
 function TaskManager() {
-  const history = useHistory();  // Initialize useHistory to handle navigation
+  const history = useHistory();  
 
-  // Navigate to CreateTask page when the button is clicked
   const navigateToCreateTask = () => {
     history.push('/create-task');
+  };
+
+  
+  const navigateToCViewTask = () => {
+    history.push('/view-task');
   };
 
   return (
     <div>
       <button onClick={navigateToCreateTask}>Create Task</button>
-      <button>View Tasks</button>
+      <button onClick={navigateToCViewTask}>View Tasks</button>
     </div>
   );
 }

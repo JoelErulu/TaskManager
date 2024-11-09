@@ -8,22 +8,19 @@ const CreateTask = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  // Function to handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
     setError(null);
 
     try {
-      // Add a new task to Firestore
       const taskRef = firebase.firestore().collection('tasks');
       await taskRef.add({
         title: title,
         description: description,
-        createdAt: firebase.firestore.FieldValue.serverTimestamp(), // Optional: Timestamp for when the task was created
+        createdAt: firebase.firestore.FieldValue.serverTimestamp(), 
       });
 
-      // Reset form fields after successful submission
       setTitle('');
       setDescription('');
       alert('Task created successfully!');

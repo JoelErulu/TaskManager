@@ -13,6 +13,8 @@ import PrivateRoute from './router/PrivateRoute';
 import Landing from './pages/Landing.js';
 import TaskManager from './pages/TaskManager.js';
 import CreateTask from './pages/CreateTask.js'
+import ViewTask from './pages/ViewTask.js'
+
 
 
 function App() {
@@ -30,6 +32,8 @@ function App() {
               <ProfileRedirect exact path="/login" component={Login} />
               <ProfileRedirect exact path="/forgotpassword" component={ForgotPassword} />
               <Route path="/create-task" component={CreateTask} />
+              <Route path="/view-task" component={ViewTask} />
+
 
 
               {/* Redirect to Landing if no route matches */}
