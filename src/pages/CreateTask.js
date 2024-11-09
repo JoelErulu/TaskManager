@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import firebase from 'firebase/app';
 import 'firebase/firestore';
+import 'bootstrap/dist/css/bootstrap.min.css';  // Import Bootstrap CSS
 
 const CreateTask = () => {
   const [title, setTitle] = useState('');
@@ -33,35 +34,45 @@ const CreateTask = () => {
   };
 
   return (
-    <div>
-      <h1>Create Task</h1>
-      {error && <p style={{ color: 'red' }}>{error}</p>}
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="title">Task Title</label>
-          <input
-            type="text"
-            id="title"
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
-            required
-          />
-        </div>
+    <div className="container min-vh-100 d-flex justify-content-center align-items-center">
+      <div className="col-md-6">
+        <h1 className="text-center mb-4">Create Task</h1>
+        {error && <p className="text-danger">{error}</p>}
+        <form onSubmit={handleSubmit} className="border p-4 rounded shadow-sm">
+          <div className="mb-3">
+            <label htmlFor="title" className="form-label">Task Title</label>
+            <input
+              type="text"
+              id="title"
+              className="form-control"
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
+              required
+            />
+          </div>
 
-        <div>
-          <label htmlFor="description">Task Description</label>
-          <textarea
-            id="description"
-            value={description}
-            onChange={(e) => setDescription(e.target.value)}
-            required
-          ></textarea>
-        </div>
+          <div className="mb-3">
+            <label htmlFor="description" className="form-label">Task Description</label>
+            <textarea
+              id="description"
+              className="form-control"
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
+              required
+            ></textarea>
+          </div>
 
-        <button type="submit" disabled={loading}>
-          {loading ? 'Creating...' : 'Create Task'}
-        </button>
-      </form>
+          <div className="text-center">
+            <button
+              type="submit"
+              className="btn custom-btn btn-lg"
+              disabled={loading}
+            >
+              {loading ? 'Creating...' : 'Create Task'}
+            </button>
+          </div>
+        </form>
+      </div>
     </div>
   );
 };

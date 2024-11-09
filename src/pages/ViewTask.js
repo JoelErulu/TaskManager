@@ -1,50 +1,58 @@
 import React, { useEffect, useState } from 'react';
 import firebase from 'firebase/app';
 import 'firebase/firestore';
+import 'bootstrap/dist/css/bootstrap.min.css';  // Import Bootstrap CSS
 
 const ViewTask = () => {
-  const [tasks, setTasks] = useState([]); // To store tasks from Firestore
-  const [loading, setLoading] = useState(true); // To track loading state
+  const [tasks, setTasks] = useState([]);
+  const [loading, setLoading] = useState(true); 
 
   // Fetch tasks from Firestore
   useEffect(() => {
     const fetchTasks = async () => {
-      try {
-        const tasksRef = firebase.firestore().collection('tasks'); // Replace 'tasks' with your Firestore collection name
+        const tasksRef = firebase.firestore().collection('tasks');
         const snapshot = await tasksRef.get();
         const taskList = snapshot.docs.map(doc => ({
           id: doc.id,
           ...doc.data(),
         }));
         setTasks(taskList); // Set the retrieved tasks to the state
-        setLoading(false); // Set loading to false when tasks are fetched
-      } catch (error) {
-        console.error('Error fetching tasks: ', error);
-        setLoading(false); // Set loading to false if there's an error
-      }
+        setLoading(false);
+    
     };
 
     fetchTasks();
-  }, []); // The empty array ensures this effect runs once when the component is mounted
+  });
 
-  if (loading) {
-    return <div>Loading tasks...</div>; // Loading indicator
-  }
 
   return (
-    <div>
-      <h2>View Tasks</h2>
+    <div className="container mt-5">
+      <h2 className="text-center mb-4">View Tasks</h2>
       {tasks.length === 0 ? (
         <p>No tasks available.</p>
       ) : (
-        <ul>
-          {tasks.map((task) => (
-            <li key={task.id}>
-              <h3>{task.title}</h3>
-              <p>{task.description}</p>
-            </li>
-          ))}
-        </ul>
+        <div className="table-responsive">
+          <table className="table table-striped table-bordered">
+            <thead className="thead-dark">
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Title</th>
+                <th scope="col">Description</th>
+                <th scope="col">Created At</th>
+              </tr>
+            </thead>
+            <tbody>
+              {tasks.map((task, index) => (
+                <tr key={task.id}>
+                  <th scope="row">{index + 1}</th>
+                  <td>{task.title}</td>
+                  <td>{task.description}</td>
+                  <td>{new Date(task.createdAt?.seconds * 1000).toLocaleString()}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       )}
     </div>
   );
