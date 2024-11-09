@@ -8,6 +8,7 @@ export const signup = async ({ firstName, lastName, email, password }) => {
   await resp.user.updateProfile({ displayName: `${firstName} ${lastName}` });
 };
 
+
 export const logout = () => {
   return firebase.auth().signOut();
 };

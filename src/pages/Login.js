@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { login } from '../firebase/auth';
+import { login, signInWithGoogle } from '../firebase/signInWithGoogle';
 import { Link } from 'react-router-dom';
-import 'bootstrap/dist/css/bootstrap.min.css'; // Import Bootstrap CSS
-import '../global.css'; // Custom global styles (if any)
+import 'bootstrap/dist/css/bootstrap.min.css';
+import '../global.css';
 
 function Login(props) {
   const { register, handleSubmit, reset } = useForm();
@@ -26,6 +26,17 @@ function Login(props) {
     if (user) {
       routeOnLogin(user);
     } else {
+      setLoading(false);
+    }
+  };
+
+  const handleGoogleLogin = async () => {
+    setLoading(true);
+    try {
+      const user = await signInWithGoogle();
+      routeOnLogin(user);
+    } catch (error) {
+      console.error("Google login error:", error);
       setLoading(false);
     }
   };
@@ -80,6 +91,16 @@ function Login(props) {
             </Link>
           </div>
         </form>
+
+        <div className="mt-4 text-center">
+          <button
+            className="btn btn-outline-primary"
+            onClick={handleGoogleLogin}
+            disabled={isLoading}
+          >
+            {isLoading ? 'Signing in with Google...' : 'Sign in with Google'}
+          </button>
+        </div>
       </div>
     </div>
   );

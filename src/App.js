@@ -15,7 +15,6 @@ import CreateTask from './pages/CreateTask.js'
 import ViewTask from './pages/ViewTask.js'
 import UserLanding from './pages/UserLanding.js'
 import CompletedTasks from './pages/CompletedTasks.js'
-import Footer from './components/Footer.js'
 
 
 
@@ -41,6 +40,7 @@ function App() {
 
               <Redirect to="/" />
             </Switch>
+
           </div>
         </div>
       </BrowserRouter>
